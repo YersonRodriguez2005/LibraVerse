@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - DL</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Librería Digital</h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}"><i class='bx bx-home'></i> Principal</a></li>
+                    <li><a href="{% url 'catalog' %}"><i class='bx bx-book'></i> Catálogo</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}"><i class='bx bx-log-out'></i> Cerrar Sesión</a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}"><i class='bx bx-log-in'></i> Iniciar Sesión</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <form method="get" action="{% url 'search' %}" class="search-form">
+                <input type="text" name="q" placeholder="Buscar por título, autor, género">
+                <button type="submit"><i class='bx bx-search'></i></button>
+            </form>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <h2>Explora nuestros libros más novedosos</h2>
+        <a href="{% url 'add_book' %}">Agregar Nuevo Libro</a>
+        <div class="cards-container">
+            {% for book in latest_books %}
+            <div class="card">
+                {% if book.cover_image %}
+                <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
+                {% endif %}
+                <h3>{{ book.title }}</h3>
+                <p>Autor: {{ book.author }}</p>
+                <p>{{ book.description|truncatewords:20 }}</p>
+                {% if book.pdf %}
+                <a href="{{ book.pdf.url }}" class="btn">Descargar PDF</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        <a href="{% url 'catalog' %}" class="view-all-link">Ver Todos Nuestros Libros</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Digital Library. All rights reserved.</p>
+        <a href="#"><i class='bx bxl-github'></i></a>
+        <a href="#"><i class='bx bxl-linkedin'></i></a>
+    </footer>
+</body>
+</html>

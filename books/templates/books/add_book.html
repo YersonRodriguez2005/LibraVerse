@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Libro</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Librería Digital</h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'add_book' %}"><i class='bx bx-book-add'></i> Añadir Libro</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <h1>Añadir un Nuevo Libro</h1>
+        <form method="post" enctype="multipart/form-data" class="add-book-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_title">Título:</label>
+                {{ form.title }}
+            </div>
+            <div class="form-group">
+                <label for="id_author">Autor:</label>
+                {{ form.author }}
+            </div>
+            <div class="form-group">
+                <label for="id_description">Descripción:</label>
+                {{ form.description }}
+            </div>
+            <div class="form-group">
+                <label for="id_pdf">PDF:</label>
+                {{ form.pdf }}
+            </div>
+            <div class="form-group">
+                <label for="id_cover_image">Imagen de portada:</label>
+                {{ form.cover_image }}
+            </div>
+            <button type="submit">Añadir Libro</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Digital Library. All rights reserved.</p>
+        <a href="#"><i class='bx bxl-github'></i></a>
+        <a href="#"><i class='bx bxl-linkedin'></i></a>
+    </footer>
+</body>
+</html>

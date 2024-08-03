@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Digital Library</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="register-container">
+        <h2>Registro de Usuario</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary"><i class='bx bx-user-plus'></i> Registrarme</button>
+        </form>
+        <a href="{% url 'login' %}">¿Ya tienes una cuenta? Inicia sesión</a>
+    </div>
+</body>
+</html>

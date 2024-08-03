@@ -1,0 +1,51 @@
+Requisitos del Proyecto: Página Web para una Biblioteca Digital
+
+1. Funcionalidades Principales
+Registro y Autenticación de Usuarios
+
+Los usuarios deben poder registrarse y acceder con sus credenciales.
+Implementar restablecimiento de contraseña.
+Catálogo de Libros
+
+Página para explorar todos los libros disponibles.
+Filtro de búsqueda por título, autor, género, y año de publicación.
+Cada libro debe tener una página de detalle con información detallada y una reseña.
+Reseñas y Valoraciones
+
+Los usuarios registrados pueden dejar reseñas y valoraciones (de 1 a 5 estrellas) para cada libro.
+Las reseñas deben poder moderarse por un administrador.
+Sistema de Prestamos
+
+Los usuarios pueden pedir prestado un libro digitalmente.
+Implementar un sistema de seguimiento de préstamos, con fechas de préstamo y devolución.
+Panel de Administración
+
+Los administradores pueden agregar, editar y eliminar libros del catálogo.
+Gestión de usuarios y sus privilegios.
+2. Diseño y Estilo
+Paleta de Colores
+
+Colores principales: Azul (#007BFF), Blanco (#FFFFFF), y Gris Claro (#F8F9FA).
+Colores secundarios: Naranja (#FFC107) y Verde (#28A745).
+Tipografía
+
+Utilizar Google Fonts, con una combinación de fuentes modernas como 'Roboto' para el cuerpo del texto y 'Merriweather' para los títulos.
+Estilo General
+
+Diseño limpio y minimalista.
+Uso de iconos modernos de Boxicons para mejorar la interfaz de usuario.
+Implementar animaciones sutiles para interacciones (hover sobre botones, transiciones de página, etc.).
+3. Otras Consideraciones
+Responsive Design
+
+La página debe ser completamente responsive, adaptándose bien a dispositivos móviles, tablets y desktops.
+SEO Friendly
+
+Asegurarse de que la estructura del sitio sea amigable para SEO, con meta tags apropiados.
+Seguridad
+
+Implementar medidas de seguridad como protección contra CSRF, validación de entradas y encriptación de contraseñas.
+Performance
+
+Optimizar las imágenes y el contenido para asegurar tiempos de carga rápidos.
+Implementar lazy loading para las imágenes del catálogo de libros.
