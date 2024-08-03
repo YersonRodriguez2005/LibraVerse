@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,45 +9,13 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <h1>Biblioteca Digital</h1>
-            <nav>
-                <ul>
-                    <li><a href="{% url 'home' %}"><i class="bx bx-home"></i>Inicio</a></li>
-                    <li><a href="{% url 'view_books' %}"><i class="bx bx-book"></i>Ver Libros</a></li>
-                    <li><a href="{% url 'add_book' %}" class="view-all-link"><i class="bx bx-plus"></i>Añadir Nuevo Libro</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <div class="main-content">
-        <div class="add-book-form">
-            <h1>Añadir Nuevo Libro</h1>
-            <form method="post" action="{% url 'add_book' %}">
-                {% csrf_token %}
-                <label for="title">Título del Libro</label>
-                <input type="text" id="title" name="title" required>
-
-                <label for="author">Autor</label>
-                <input type="text" id="author" name="author" required>
-
-                <label for="description">Descripción</label>
-                <textarea id="description" name="description" rows="5" required></textarea>
-
-                <label for="cover">URL de la Portada</label>
-                <input type="text" id="cover" name="cover" required>
-
-                <button type="submit"><i class="bx bx-save"></i>Guardar Libro</button>
-            </form>
-        </div>
+    <div class="add-book-form">
+        <h1>Añadir Nuevo Libro</h1>
+        <form method="post" enctype="multipart/form-data">  <!-- enctype es necesario para subir archivos -->
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Guardar Libro</button>
+        </form>
     </div>
-
-    <footer>
-        <p>&copy; 2024 Biblioteca Digital</p>
-        <a href="https://github.com/tu-usuario"><i class="bx bxl-github"></i></a>
-        <a href="https://linkedin.com/in/tu-usuario"><i class="bx bxl-linkedin"></i></a>
-    </footer>
 </body>
 </html>

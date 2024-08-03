@@ -16,4 +16,4 @@ class CustomUserCreationForm(UserCreationForm):
 class BookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ['title', 'author', 'description', 'pdf', 'cover_image']  # Añadido campo cover_image
+        fields = ['title', 'author', 'description', 'cover_image', 'pdf']

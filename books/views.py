@@ -8,7 +8,7 @@ from .forms import CustomUserCreationForm, BookForm
 
 # Mostrar interfaz renderizado de home
 def home(request):
-    latest_books = Book.objects.all().order_by('-created_at')[:10]  # Obtener los últimos 10 libros agregados
+    latest_books = Book.objects.all().order_by('-id')[:5]
     return render(request, 'home.html', {'latest_books': latest_books})
 
 # Mostrar interfaz renderizado de register
@@ -90,14 +90,13 @@ def admin_books(request):
 #Metodo para agregar libro nuevo
 def add_book(request):
     if request.method == 'POST':
-        title = request.POST['title']
-        author = request.POST['author']
-        description = request.POST['description']
-        cover = request.POST['cover']
-        new_book = Book(title=title, author=author, description=description, cover=cover)
-        new_book.save()
-        return redirect('view_books')
-    return render(request, 'add_book.html')
+        form = BookForm(request.POST, request.FILES)  # Asegúrate de incluir request.FILES para manejar la imagen
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = BookForm()
+    return render(request, 'add_book.html', {'form': form})
 
 #Metodo para vista de lirbos: def view_books(request):
 def view_books(request):
