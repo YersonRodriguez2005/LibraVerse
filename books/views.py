@@ -96,5 +96,10 @@ def add_book(request):
         cover = request.POST['cover']
         new_book = Book(title=title, author=author, description=description, cover=cover)
         new_book.save()
-        return redirect('view_books')  # Redirige a la vista donde se muestran todos los libros
+        return redirect('view_books')
     return render(request, 'add_book.html')
+
+#Metodo para vista de lirbos: def view_books(request):
+def view_books(request):
+    books = Book.objects.all()
+    return render(request, 'view_books.html', {'books': books})

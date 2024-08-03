@@ -14,6 +14,7 @@ urlpatterns = [
     path('protected/', views.protected_view, name='protected'),
     path('search/', views.search_books, name='search'),
     path('catalog/', views.catalog, name='catalog'),  
+    path('books/', views.view_books, name='view_books'),
     path('add-book/', views.add_book, name='add_book'),    
     path('admin_books/', admin_books, name='admin_books'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
