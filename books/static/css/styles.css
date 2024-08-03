@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap');
+
 /* Estilos generales */
 body {
     font-family: 'Antic Slab', sans-serif;
@@ -90,7 +91,7 @@ header nav ul li a:hover {
 }
 
 .main-content {
-    margin-top: 50px;
+    margin-top: 100px;
     text-align: center;
     padding: 20px;
 }
@@ -191,6 +192,59 @@ header nav ul li a:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Estilos para el formulario de añadir libros */
+.add-book-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.add-book-form h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.add-book-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-book-form form label {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.add-book-form form input,
+.add-book-form form textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.add-book-form form button {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-book-form form button:hover {
+    background-color: #2980b9;
+}
+
+/* Footer */
 footer {
     background-color: #2c3e50;
     padding: 20px;
@@ -236,44 +290,33 @@ footer a:hover {
     }
 }
 
-/* Estilos específicos para la interfaz de añadir libros */
-.add-book-form {
-    max-width: 600px;
-    margin: 0 auto;
+/* Estilos específicos para la página de login */
+.login-container,
+.register-container {
+    max-width: 400px;
+    margin: 100px auto;
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    text-align: center;
 }
 
-.add-book-form h1 {
-    font-size: 3rem;
+.login-container h2,
+.register-container h2 {
+    font-size: 2rem;
     margin-bottom: 20px;
     color: #2c3e50;
 }
 
-.add-book-form form {
+.login-container form,
+.register-container form {
     display: flex;
     flex-direction: column;
 }
 
-.add-book-form form label {
-    font-size: 1.5rem;
-    margin-bottom: 5px;
-    color: #2c3e50;
-}
-
-.add-book-form form input,
-.add-book-form form textarea {
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    width: 80%;
-}
-
-.add-book-form form button {
+.login-container form button,
+.register-container form button {
     padding: 10px;
     font-size: 1rem;
     background-color: #3498db;
@@ -282,8 +325,30 @@ footer a:hover {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.add-book-form form button:hover {
+.login-container form button i,
+.register-container form button i {
+    margin-right: 8px;
+}
+
+.login-container form button:hover,
+.register-container form button:hover {
     background-color: #2980b9;
+}
+
+.login-container a,
+.register-container a {
+    display: block;
+    margin-top: 15px;
+    color: #3498db;
+    text-decoration: none;
+}
+
+.login-container a:hover,
+.register-container a:hover {
+    color: #2980b9;
 }

@@ -86,3 +86,15 @@ def admin_books(request):
     # Obtén los libros añadidos recientemente
     books = Book.objects.all().order_by('-created_at')
     return render(request, 'books/admin_books.html', {'books': books})
+
+#Metodo para agregar libro nuevo
+def add_book(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        author = request.POST['author']
+        description = request.POST['description']
+        cover = request.POST['cover']
+        new_book = Book(title=title, author=author, description=description, cover=cover)
+        new_book.save()
+        return redirect('view_books')  # Redirige a la vista donde se muestran todos los libros
+    return render(request, 'add_book.html')
