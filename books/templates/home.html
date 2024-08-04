@@ -20,6 +20,9 @@
                     <li><a href="{% url 'catalog' %}"><i class='bx bx-book'></i> Catálogo</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'logout' %}"><i class='bx bx-log-out'></i> Cerrar Sesión</a></li>
+                    {% if user.is_superuser %}
+                    <li><a href="{% url 'admin_books' %}"><i class='bx bx-cog'></i> Admin Books</a></li>
+                    {% endif %}
                     {% else %}
                     <li><a href="{% url 'login' %}"><i class='bx bx-log-in'></i> Iniciar Sesión</a></li>
                     {% endif %}

@@ -1,15 +1,18 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .models import Book
 from .forms import CustomUserCreationForm, BookForm
+from django.contrib import messages
+from django.core.exceptions import PermissionDenied
 
 # Mostrar interfaz renderizado de home
 def home(request):
-    latest_books = Book.objects.all().order_by('-id')[:5]
+    latest_books = Book.objects.filter(approved=True).order_by('-id')[:5]
     return render(request, 'home.html', {'latest_books': latest_books})
+
 
 # Mostrar interfaz renderizado de register
 def register(request):
@@ -77,16 +80,47 @@ def add_book(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'El libro ha sido agregado exitosamente.')
-            return redirect('view_books')  # Redirige a la lista de libros o a la página que desees
+            return redirect('admin_books')  # Redirige a la vista de administración
     else:
         form = BookForm()
     return render(request, 'books/add_book.html', {'form': form})
 
 @login_required
+def edit_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES, instance=book)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'El libro ha sido editado exitosamente.')
+            return redirect('admin_books')
+    else:
+        form = BookForm(instance=book)
+    return render(request, 'books/edit_book.html', {'form': form})
+
+@login_required
+def delete_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    if request.method == 'POST':
+        book.delete()
+        messages.success(request, 'El libro ha sido eliminado.')
+        return redirect('admin_books')
+    return render(request, 'books/delete_book.html', {'book': book})
+
+@login_required
 def admin_books(request):
-    # Obtén los libros añadidos recientemente
+    if not request.user.is_superuser:
+        raise PermissionDenied
     books = Book.objects.all().order_by('-created_at')
     return render(request, 'books/admin_books.html', {'books': books})
+
+@login_required
+def approve_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    book.approved = True
+    book.save()
+    messages.success(request, 'El libro ha sido aprobado.')
+    return redirect('admin_books')
 
 #Metodo para vista de lirbos: def view_books(request):
 def view_books(request):

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Nuevo Libro</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <div class="add-book-form">
+        <h1>Eliminar Libro</h1>
+        <p>¿Estás seguro de que deseas eliminar "{{ book.title }}"?</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">Eliminar</button>
+            <a href="{% url 'admin_books' %}">Cancelar</a>
+        </form>
+    </div>
+</body>
+
+</html>
