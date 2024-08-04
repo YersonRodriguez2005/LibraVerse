@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+    <a href="{% url 'home' %}" class="back-button">
+        <i class='bx bx-arrow-back'></i> Volver
+    </a>
+
     <div class="add-book-form">
         <h1>Añadir Nuevo Libro</h1>
         <form method="post" enctype="multipart/form-data">  <!-- enctype es necesario para subir archivos -->

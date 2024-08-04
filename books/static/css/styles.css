@@ -353,29 +353,19 @@ footer a:hover {
     color: #2980b9;
 }
 
-.message-container {
-    margin: 20px;
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #3498db;
+    color: white;
     padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-size: 24px;
+    transition: background-color 0.3s;
 }
-
-.alert {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: #f0f0f0;
-}
-
-.alert.success {
-    color: #3c763d;
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-}
-
-/* Estilos adicionales para otros tipos de mensajes */
-.alert.error {
-    color: #a94442;
-    background-color: #f2dede;
-    border-color: #ebccd1;
+.back-button:hover {
+    background-color: #2980b9;
 }
