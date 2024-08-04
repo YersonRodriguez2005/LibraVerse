@@ -76,7 +76,8 @@ def add_book(request):
         form = BookForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('home')  # Redirige a la vista home para ver el libro añadido
+            messages.success(request, 'El libro ha sido agregado exitosamente.')
+            return redirect('view_books')  # Redirige a la lista de libros o a la página que desees
     else:
         form = BookForm()
     return render(request, 'books/add_book.html', {'form': form})
@@ -86,17 +87,6 @@ def admin_books(request):
     # Obtén los libros añadidos recientemente
     books = Book.objects.all().order_by('-created_at')
     return render(request, 'books/admin_books.html', {'books': books})
-
-#Metodo para agregar libro nuevo
-def add_book(request):
-    if request.method == 'POST':
-        form = BookForm(request.POST, request.FILES)  # Asegúrate de incluir request.FILES para manejar la imagen
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-    else:
-        form = BookForm()
-    return render(request, 'add_book.html', {'form': form})
 
 #Metodo para vista de lirbos: def view_books(request):
 def view_books(request):

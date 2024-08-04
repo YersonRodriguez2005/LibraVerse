@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Nuevo Libro</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="add-book-form">
+        <h1>Añadir Nuevo Libro</h1>
+        <form method="post" enctype="multipart/form-data">  <!-- enctype es necesario para subir archivos -->
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Guardar Libro</button>
+        </form>
+    </div>
+</body>
+</html>
